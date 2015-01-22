@@ -34,11 +34,11 @@ finally:
 # Example 2
 import json
 
-def load_json_key(data, key):          
+def load_json_key(data, key):
     try:
         result_dict = json.loads(data)  # May raise ValueError
     except ValueError as e:
-        raise KeyError() from e
+        raise KeyError from e
     else:
         return result_dict[key]         # May raise KeyError
 

@@ -91,5 +91,5 @@ print(sf_dt)
 
 # Example 9
 nepal = pytz.timezone('Asia/Katmandu')
-nepa_dt = nepal.normalize(utc_dt.astimezone(nepal))
-print(nepa_dt)
+nepal_dt = nepal.normalize(utc_dt.astimezone(nepal))
+print(nepal_dt)

@@ -79,7 +79,7 @@ try:
             value = 'Value for %s' % name
             setattr(self, name, value)
             return value
-    
+
     data = MissingPropertyDB()
     data.foo  # Test this works
     data.bad_name
@@ -106,7 +106,7 @@ print('foo exists: ', hasattr(data, 'foo'))
 # Example 8
 class SavingDB(object):
     def __setattr__(self, name, value):
-        # Save some data to the DB
+        # Save some data to the DB log
         pass
         super().__setattr__(name, value)
 

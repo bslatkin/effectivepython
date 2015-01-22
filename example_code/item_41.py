@@ -23,7 +23,7 @@ from sys import stdout as STDOUT
 # Example 1
 def gcd(pair):
     a, b = pair
-    high, low = max(a, b), min(a, b)
+    low = min(a, b)
     for i in range(low, 0, -1):
         if a % i == 0 and b % i == 0:
             return i

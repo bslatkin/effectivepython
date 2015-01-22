@@ -47,7 +47,7 @@ from decimal import Decimal
 from decimal import ROUND_UP
 rate = Decimal('1.45')
 seconds = Decimal('222')  # 3*60 + 42
-cost = rate * seconds / 60
+cost = rate * seconds / Decimal('60')
 print(cost)
 
 
@@ -59,7 +59,7 @@ print(rounded)
 # Example 7
 rate = Decimal('0.05')
 seconds = Decimal('5')
-cost = rate * seconds / 60
+cost = rate * seconds / Decimal('60')
 print(cost)
 
 

@@ -104,7 +104,7 @@ class WeightedGradebook(object):
                 total_weight += weight
             score_sum += subject_avg / total_weight
             score_count += 1
-        return score_sum / float(score_count)
+        return score_sum / score_count
 
 
 # Example 8

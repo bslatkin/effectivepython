@@ -29,7 +29,7 @@ class Bucket(object):
         self.reset_time = datetime.now()
         self.quota = 0
 
-    def __str__(self):
+    def __repr__(self):
         return 'Bucket(quota=%d)' % self.quota
 
 bucket = Bucket(60)
@@ -86,7 +86,7 @@ class Bucket(object):
         self.max_quota = 0
         self.quota_consumed = 0
 
-    def __str__(self):
+    def __repr__(self):
         return ('Bucket(max_quota=%d, quota_consumed=%d)' %
                 (self.max_quota, self.quota_consumed))
 

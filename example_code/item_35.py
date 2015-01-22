@@ -53,10 +53,10 @@ print('After: ', repr(foo.first_name), foo.__dict__)
 # Example 4
 class Meta(type):
     def __new__(meta, name, bases, class_dict):
-        for name, value in class_dict.items():
+        for key, value in class_dict.items():
             if isinstance(value, Field):
-                value.name = name
-                value.internal_name = '_' + name
+                value.name = key
+                value.internal_name = '_' + key
         cls = type.__new__(meta, name, bases, class_dict)
         return cls
 
