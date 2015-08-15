@@ -70,7 +70,12 @@ if not success:
 x, y = 5, 0
 _, result = divide(x, y)
 if not result:
-    print('Invalid inputs')
+    print('Invalid inputs')  # This is right
+
+x, y = 0, 5
+_, result = divide(x, y)
+if not result:
+    print('Invalid inputs')  # This is wrong
 
 
 # Example 7
