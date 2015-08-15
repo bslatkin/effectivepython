@@ -39,6 +39,23 @@ def safe_division_d(number, divisor, **kwargs):
         else:
             raise
 
-safe_division_d(1, 10)
-safe_division_d(1, 0, ignore_zero_division=True)
-safe_division_d(1, 10**500, ignore_overflow=True)
+assert safe_division_d(1.0, 10.0) == 0.1
+assert safe_division_d(1.0, 0.0, ignore_zero_division=True) == float('inf')
+assert safe_division_d(1.0, 10**500, ignore_overflow=True) == 0.0
+
+# Example 12
+try:
+    safe_division_d(1.0, 0, False, True)
+except:
+    logging.exception('Expected')
+else:
+    assert False
+
+
+# Example 13
+try:
+    safe_division_d(0.0, 0, unexpected=True)
+except:
+    logging.exception('Expected')
+else:
+    assert False
