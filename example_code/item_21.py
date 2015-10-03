@@ -40,11 +40,13 @@ def safe_division(number, divisor, ignore_overflow,
 # Example 2
 result = safe_division(1, 10**500, True, False)
 print(result)
+assert result == 0
 
 
 # Example 3
 result = safe_division(1, 0, False, True)
 print(result)
+assert result == float('inf')
 
 
 # Example 4
@@ -66,12 +68,12 @@ def safe_division_b(number, divisor,
 
 
 # Example 5
-safe_division_b(1, 10**500, ignore_overflow=True)
-safe_division_b(1, 0, ignore_zero_division=True)
+assert safe_division_b(1, 10**500, ignore_overflow=True) == 0
+assert safe_division_b(1, 0, ignore_zero_division=True) == float('inf')
 
 
 # Example 6
-safe_division_b(1, 10**500, True, False)
+assert safe_division_b(1, 10**500, True, False) == 0
 
 
 # Example 7
