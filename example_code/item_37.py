@@ -66,16 +66,12 @@ print('Took %.3f seconds' % (end - start))
 
 
 # Example 6
-import select
-import socket
+import select, socket
 
-# This is for supporting Windows specifically. Windows can't do a
-# select call with an empty list. Don't connect the socket to anything.
-# Waiting for it will do nothing.
-_s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
+# Creating the socket is specifically to support Windows. Windows can't do
+# a select call with an empty list.
 def slow_systemcall():
-    select.select([_s], [], [], 0.1)
+    select.select([socket.socket()], [], [], 0.1)
 
 
 # Example 7
