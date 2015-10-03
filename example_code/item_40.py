@@ -92,7 +92,7 @@ q6 = it.send(EMPTY)
 q7 = it.send(EMPTY)
 q8 = it.send(EMPTY)
 try:
-    count = it.send(EMPTY)     # Send q8 state, retrieve count
+    it.send(EMPTY)     # Send q8 state, retrieve count
 except StopIteration as e:
     print('Count: ', e.value)  # Value from return statement
 
