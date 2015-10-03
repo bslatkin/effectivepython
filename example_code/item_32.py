@@ -107,7 +107,6 @@ print('foo exists: ', hasattr(data, 'foo'))
 class SavingDB(object):
     def __setattr__(self, name, value):
         # Save some data to the DB log
-        pass
         super().__setattr__(name, value)
 
 
@@ -128,7 +127,7 @@ print('Finally:', data.__dict__)
 # Example 10
 class BrokenDictionaryDB(object):
     def __init__(self, data):
-        self._data = {}
+        self._data = data
 
     def __getattribute__(self, name):
         print('Called __getattribute__(%s)' % name)
