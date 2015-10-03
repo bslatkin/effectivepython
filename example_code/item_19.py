@@ -62,6 +62,7 @@ weight_diff = 0.5
 time_diff = 3
 flow = flow_rate(weight_diff, time_diff)
 print('%.3f kg per second' % flow)
+assert (flow - 0.16666666666666666) < 0.0001
 
 
 # Example 6
@@ -71,6 +72,7 @@ def flow_rate(weight_diff, time_diff, period):
 
 # Example 7
 flow_per_second = flow_rate(weight_diff, time_diff, 1)
+assert (flow_per_second - 0.16666666666666666) < 0.0001
 
 
 # Example 8
@@ -80,21 +82,25 @@ def flow_rate(weight_diff, time_diff, period=1):
 
 # Example 9
 flow_per_second = flow_rate(weight_diff, time_diff)
+assert (flow_per_second - 0.16666666666666666) < 0.0001
 flow_per_hour = flow_rate(weight_diff, time_diff, period=3600)
+assert flow_per_hour == 600.0
 
 
 # Example 10
 def flow_rate(weight_diff, time_diff,
               period=1, units_per_kg=1):
-    return ((weight_diff / units_per_kg) / time_diff) * period
+    return ((weight_diff * units_per_kg) / time_diff) * period
 
 
 # Example 11
 pounds_per_hour = flow_rate(weight_diff, time_diff,
                             period=3600, units_per_kg=2.2)
 print(pounds_per_hour)
+assert pounds_per_hour == 1320.0
 
 
 # Example 12
 pounds_per_hour = flow_rate(weight_diff, time_diff, 3600, 2.2)
 print(pounds_per_hour)
+assert pounds_per_hour == 1320.0
