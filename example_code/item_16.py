@@ -71,11 +71,11 @@ continent a new nation, conceived in liberty,
 and dedicated to the proposition that all men
 are created equal."""
 
-with open('/tmp/address.txt', 'w') as f:
+with open('address.txt', 'w') as f:
     f.write(address_lines)
 
 from itertools import islice
-with open('/tmp/address.txt', 'r') as f:
+with open('address.txt', 'r') as f:
     it = index_file(f)
     results = islice(it, 0, 3)
     print(list(results))

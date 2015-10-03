@@ -35,7 +35,7 @@ state.lives -= 1  # Player had to try again
 
 # Example 3
 import pickle
-state_path = '/tmp/game_state.bin'
+state_path = 'game_state.bin'
 with open(state_path, 'wb') as f:
     pickle.dump(state, f)
 

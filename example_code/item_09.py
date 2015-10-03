@@ -22,17 +22,17 @@ from sys import stdout as STDOUT
 
 # Example 1
 import random
-with open('/tmp/my_file.txt', 'w') as f:
+with open('my_file.txt', 'w') as f:
     for _ in range(10):
         f.write('a' * random.randint(0, 100))
         f.write('\n')
 
-value = [len(x) for x in open('/tmp/my_file.txt')]
+value = [len(x) for x in open('my_file.txt')]
 print(value)
 
 
 # Example 2
-it = (len(x) for x in open('/tmp/my_file.txt'))
+it = (len(x) for x in open('my_file.txt'))
 print(it)
 
 

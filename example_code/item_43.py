@@ -70,7 +70,7 @@ my_function()
 
 
 # Example 7
-with open('/tmp/my_output.txt', 'w') as handle:
+with open('my_output.txt', 'w') as handle:
     handle.write('This is some data!')
 
 

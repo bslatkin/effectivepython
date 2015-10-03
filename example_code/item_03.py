@@ -47,7 +47,7 @@ print(repr(to_bytes('foo')))
 # Example 5
 try:
     import os
-    with open('/tmp/random.bin', 'w') as f:
+    with open('random.bin', 'w') as f:
         f.write(os.urandom(10))
 except:
     logging.exception('Expected')
@@ -56,5 +56,5 @@ else:
 
 
 # Example 6
-with open('/tmp/random.bin', 'wb') as f:
+with open('random.bin', 'wb') as f:
     f.write(os.urandom(10))

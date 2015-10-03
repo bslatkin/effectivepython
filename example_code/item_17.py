@@ -37,7 +37,7 @@ print(percentages)
 
 
 # Example 3
-path = '/tmp/my_numbers.txt'
+path = 'my_numbers.txt'
 with open(path, 'w') as f:
     for i in (15, 35, 80):
         f.write('%d\n' % i)
@@ -49,13 +49,13 @@ def read_visits(data_path):
 
 
 # Example 4
-it = read_visits('/tmp/my_numbers.txt')
+it = read_visits('my_numbers.txt')
 percentages = normalize(it)
 print(percentages)
 
 
 # Example 5
-it = read_visits('/tmp/my_numbers.txt')
+it = read_visits('my_numbers.txt')
 print(list(it))
 print(list(it))  # Already exhausted
 
@@ -72,7 +72,7 @@ def normalize_copy(numbers):
 
 
 # Example 7
-it = read_visits('/tmp/my_numbers.txt')
+it = read_visits('my_numbers.txt')
 percentages = normalize_copy(it)
 print(percentages)
 

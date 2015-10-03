@@ -21,10 +21,10 @@ from sys import stdout as STDOUT
 
 
 # Example 1
-handle = open('/tmp/random_data.txt', 'w', encoding='utf-8')
+handle = open('random_data.txt', 'w', encoding='utf-8')
 handle.write('success\nand\nnew\nlines')
 handle.close()
-handle = open('/tmp/random_data.txt')  # May raise IOError
+handle = open('random_data.txt')  # May raise IOError
 try:
     data = handle.read()  # May raise UnicodeDecodeError
 finally:
@@ -82,7 +82,7 @@ def divide_json(path):
         handle.close()          # Always runs
 
 # Everything works
-temp_path = '/tmp/random_data.json'
+temp_path = 'random_data.json'
 handle = open(temp_path, 'w')
 handle.write('{"numerator": 1, "denominator": 10}')
 handle.close()
