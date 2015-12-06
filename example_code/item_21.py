@@ -38,13 +38,13 @@ def safe_division(number, divisor, ignore_overflow,
 
 
 # Example 2
-result = safe_division(1, 10**500, True, False)
+result = safe_division(1.0, 10**500, True, False)
 print(result)
-assert result == 0
+assert result is 0
 
 
 # Example 3
-result = safe_division(1, 0, False, True)
+result = safe_division(1.0, 0, False, True)
 print(result)
 assert result == float('inf')
 
@@ -68,12 +68,12 @@ def safe_division_b(number, divisor,
 
 
 # Example 5
-assert safe_division_b(1, 10**500, ignore_overflow=True) == 0
-assert safe_division_b(1, 0, ignore_zero_division=True) == float('inf')
+assert safe_division_b(1.0, 10**500, ignore_overflow=True) is 0
+assert safe_division_b(1.0, 0, ignore_zero_division=True) == float('inf')
 
 
 # Example 6
-assert safe_division_b(1, 10**500, True, False) == 0
+assert safe_division_b(1.0, 10**500, True, False) is 0
 
 
 # Example 7
@@ -96,7 +96,7 @@ def safe_division_c(number, divisor, *,
 
 # Example 8
 try:
-    safe_division_c(1, 10**500, True, False)
+    safe_division_c(1.0, 10**500, True, False)
 except:
     logging.exception('Expected')
 else:
@@ -104,9 +104,9 @@ else:
 
 
 # Example 9
-safe_division_c(1, 0, ignore_zero_division=True)  # No exception
+safe_division_c(1.0, 0, ignore_zero_division=True)  # No exception
 try:
-    safe_division_c(1, 0)
+    safe_division_c(1.0, 0)
     assert False
 except ZeroDivisionError:
     pass  # Expected

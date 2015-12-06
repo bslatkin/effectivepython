@@ -41,7 +41,7 @@ def safe_division_d(number, divisor, **kwargs):
 
 assert safe_division_d(1.0, 10) == 0.1
 assert safe_division_d(1.0, 0, ignore_zero_division=True) == float('inf')
-assert safe_division_d(1.0, 10**500, ignore_overflow=True) == 0.0
+assert safe_division_d(1.0, 10**500, ignore_overflow=True) is 0
 
 # Example 12
 try:
