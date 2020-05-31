@@ -54,7 +54,7 @@ class Meta(type):
         print(f'* Running {meta}.__new__ for {name}')
         print('Bases:', bases)
         print = pprint
-        print(class_dict)        
+        print(class_dict)
         print = orig_print
         return type.__new__(meta, name, bases, class_dict)
 
@@ -124,7 +124,7 @@ class BetterPolygon:
     def __init_subclass__(cls):
         super().__init_subclass__()
         if cls.sides < 3:
-            raise ValueError('Polygons need 3+ sides')  
+            raise ValueError('Polygons need 3+ sides')
 
     @classmethod
     def interior_angles(cls):
@@ -238,24 +238,24 @@ class Filled:
     def __init_subclass__(cls):
         super().__init_subclass__()
         if cls.color not in ('red', 'green', 'blue'):
-            raise ValueError('Fills need a valid color')  
+            raise ValueError('Fills need a valid color')
 
 
 # Example 13
-class RedTriangle(Filled, Polygon):
+class RedTriangle(Filled, BetterPolygon):
     color = 'red'
     sides = 3
 
 ruddy = RedTriangle()
 assert isinstance(ruddy, Filled)
-assert isinstance(ruddy, Polygon)
+assert isinstance(ruddy, BetterPolygon)
 
 
 # Example 14
 try:
     print('Before class')
     
-    class BlueLine(Filled, Polygon):
+    class BlueLine(Filled, BetterPolygon):
         color = 'blue'
         sides = 2
     
@@ -270,7 +270,7 @@ else:
 try:
     print('Before class')
     
-    class BeigeSquare(Filled, Polygon):
+    class BeigeSquare(Filled, BetterPolygon):
         color = 'beige'
         sides = 4
     

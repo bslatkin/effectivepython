@@ -234,7 +234,7 @@ old_template = (
     'Today\'s soup is %(soup)s, '
     'buy one get two %(oyster)s oysters, '
     'and our special entrée is %(special)s.')
-old_formatted = template % {
+old_formatted = old_template % {
     'soup': 'lentil',
     'oyster': 'kumamoto',
     'special': 'schnitzel',

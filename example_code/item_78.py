@@ -269,7 +269,7 @@ def do_rounds(database, species, *, utcnow=datetime.utcnow):
 
     for name, last_mealtime in animals:
         if (now - last_mealtime) > feeding_timedelta:
-            feed_func(database, name, now)
+            feed_animal(database, name, now)
             fed += 1
 
     return fed
@@ -297,9 +297,9 @@ with patch.multiple('__main__',
     result = do_rounds(database, 'Meerkat', utcnow=now_func)
     assert result == 2
 
-    food_func.assert_called_once_with(database, 'Meerkat')
-    animals_func.assert_called_once_with(database, 'Meerkat')
-    feed_func.assert_has_calls(
+    get_food_period.assert_called_once_with(database, 'Meerkat')
+    get_animals.assert_called_once_with(database, 'Meerkat')
+    feed_animal.assert_has_calls(
         [
             call(database, 'Spot', now_func.return_value),
             call(database, 'Fluffy', now_func.return_value),

@@ -77,7 +77,7 @@ def my_generator():
     received = yield 1
     print(f'received = {received}')
 
-it = iter(my_generator())
+it = my_generator()
 output = next(it)       # Get first generator output
 print(f'output = {output}')
 
@@ -90,7 +90,7 @@ else:
 
 
 # Example 4
-it = iter(my_generator())
+it = my_generator()
 output = it.send(None)  # Get first generator output
 print(f'output = {output}')
 

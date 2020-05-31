@@ -194,6 +194,10 @@ else:
 
 
 # Example 5
+# Clear the sentinel object from the out queue
+for _ in out_queue:
+    pass
+
 # Restore the working version of this function
 def game_logic(state, neighbors):
     if state == ALIVE:
