@@ -132,13 +132,11 @@ class NewBucket:
             self.quota_consumed = 0
             self.max_quota = 0
         elif delta < 0:
-            # Quota being filled for the new period
-            assert self.quota_consumed == 0
-            self.max_quota = amount
+            # Quota being filled during the period
+            self.max_quota = amount + self.quota_consumed
         else:
             # Quota being consumed during the period
-            assert self.max_quota >= self.quota_consumed
-            self.quota_consumed += delta
+            self.quota_consumed = delta
 
 
 # Example 10
@@ -160,3 +158,47 @@ else:
     print('Not enough for 3 quota')
 
 print('Still', bucket)
+
+
+# Example 11
+bucket = NewBucket(6000)
+assert bucket.max_quota == 0
+assert bucket.quota_consumed == 0
+assert bucket.quota == 0
+
+fill(bucket, 100)
+assert bucket.max_quota == 100
+assert bucket.quota_consumed == 0
+assert bucket.quota == 100
+
+assert deduct(bucket, 10)
+assert bucket.max_quota == 100
+assert bucket.quota_consumed == 10
+assert bucket.quota == 90
+
+assert deduct(bucket, 20)
+assert bucket.max_quota == 100
+assert bucket.quota_consumed == 30
+assert bucket.quota == 70
+
+fill(bucket, 50)
+assert bucket.max_quota == 150
+assert bucket.quota_consumed == 30
+assert bucket.quota == 120
+
+assert deduct(bucket, 40)
+assert bucket.max_quota == 150
+assert bucket.quota_consumed == 70
+assert bucket.quota == 80
+
+assert not deduct(bucket, 81)
+assert bucket.max_quota == 150
+assert bucket.quota_consumed == 70
+assert bucket.quota == 80
+
+bucket.reset_time += bucket.period_delta - timedelta(1)
+assert bucket.quota == 80
+assert not deduct(bucket, 79)
+
+fill(bucket, 1)
+assert bucket.quota == 1
