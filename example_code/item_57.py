@@ -111,9 +111,11 @@ def count_neighbors(y, x, get):
             count += 1
     return count
 
+
 def game_logic(state, neighbors):
     # Do some blocking input/output in here:
     data = my_socket.recv(100)
+
 
 def game_logic(state, neighbors):
     if state == ALIVE:
@@ -126,19 +128,21 @@ def game_logic(state, neighbors):
             return ALIVE     # Regenerate
     return state
 
-def step_cell(y, x, get, set):
+
+def step_cell(y, x, get, set, game_logic):
     state = get(y, x)
     neighbors = count_neighbors(y, x, get)
     next_state = game_logic(state, neighbors)
     set(y, x, next_state)
 
-def simulate_threaded(grid):
+
+def simulate_threaded(grid, game_logic):
     next_grid = LockingGrid(grid.height, grid.width)
 
     threads = []
     for y in range(grid.height):
         for x in range(grid.width):
-            args = (y, x, grid.get, next_grid.set)
+            args = (y, x, grid.get, next_grid.set, game_logic)
             thread = Thread(target=step_cell, args=args)
             thread.start()  # Fan out
             threads.append(thread)
@@ -178,34 +182,61 @@ class ColumnPrinter:
 
         return '\n'.join(rows)
 
-grid = LockingGrid(5, 9)            # Changed
-grid.set(0, 3, ALIVE)
-grid.set(1, 4, ALIVE)
-grid.set(2, 2, ALIVE)
-grid.set(2, 3, ALIVE)
-grid.set(2, 4, ALIVE)
+def example_3():
+    grid = LockingGrid(5, 9)            # Changed
+    grid.set(0, 3, ALIVE)
+    grid.set(1, 4, ALIVE)
+    grid.set(2, 2, ALIVE)
+    grid.set(2, 3, ALIVE)
+    grid.set(2, 4, ALIVE)
 
-columns = ColumnPrinter()
-for i in range(5):
-    columns.append(str(grid))
-    grid = simulate_threaded(grid)  # Changed
+    columns = ColumnPrinter()
+    for i in range(5):
+        columns.append(str(grid))
+        grid = simulate_threaded(grid, game_logic)  # Changed
 
-print(columns)
+    print(columns)
 
 
 # Example 4
-def game_logic(state, neighbors):
+def game_logic_4(state, neighbors):
     raise OSError('Problem with I/O')
 
 
-# Example 5
-import contextlib
-import io
+def example_4():
+    grid = LockingGrid(5, 9)            # Changed
+    grid.set(0, 3, ALIVE)
+    grid.set(1, 4, ALIVE)
+    grid.set(2, 2, ALIVE)
+    grid.set(2, 3, ALIVE)
+    grid.set(2, 4, ALIVE)
 
-fake_stderr = io.StringIO()
-with contextlib.redirect_stderr(fake_stderr):
-    thread = Thread(target=game_logic, args=(ALIVE, 3))
-    thread.start()
-    thread.join()
+    columns = ColumnPrinter()
+    for i in range(5):
+        columns.append(str(grid))
+        grid = simulate_threaded(grid, game_logic_4)  # Changed
 
-print(fake_stderr.getvalue())
+    print(columns)
+
+
+def example_5():
+    # Example 5
+    import contextlib
+    import io
+
+    fake_stderr = io.StringIO()
+    with contextlib.redirect_stderr(fake_stderr):
+        thread = Thread(target=game_logic_4, args=(ALIVE, 3))
+        thread.start()
+        thread.join()
+
+    print(fake_stderr.getvalue())
+
+def main():
+    example_3()
+    example_4()
+    example_5()
+
+
+if __name__ == "__main__":
+    main()
