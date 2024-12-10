@@ -17,7 +17,7 @@
 
 
 print("Example 9")
-# Check types in this file with: python -m mypy <path>
+# Check types in this file with: python3 -m mypy <path>
 
 def careful_divide(a: float, b: float) -> float:
     """Divides a by b.

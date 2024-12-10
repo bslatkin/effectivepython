@@ -17,7 +17,7 @@
 
 
 print("Example 6")
-# Check types in this file with: python -m mypy <path>
+# Check types in this file with: python3 -m mypy <path>
 
 class Counter:
     def __init__(self) -> None:

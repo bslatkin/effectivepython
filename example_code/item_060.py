@@ -81,7 +81,7 @@ class Exam:
             raise ValueError("Grade must be between 0 and 100")
 
 
-print("Example 4")
+    print("Example 4")
     @property
     def writing_grade(self):
         return self._writing_grade
@@ -208,7 +208,7 @@ class NamedGrade:
         self.internal_name = "_" + name
 
 
-print("Example 15")
+    print("Example 15")
     def __get__(self, instance, instance_type):
         if instance is None:
             return self

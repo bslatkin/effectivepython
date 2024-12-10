@@ -111,7 +111,7 @@ class WriteThread(Thread):
         self.loop.run_until_complete(asyncio.sleep(0))
 
 
-print("Example 5")
+    print("Example 5")
     async def real_write(self, data):
         self.output.write(data)
 
@@ -122,7 +122,7 @@ print("Example 5")
         await asyncio.wrap_future(future)
 
 
-print("Example 6")
+    print("Example 6")
     async def real_stop(self):
         self.loop.stop()
 
@@ -133,7 +133,7 @@ print("Example 6")
         await asyncio.wrap_future(future)
 
 
-print("Example 7")
+    print("Example 7")
     async def __aenter__(self):
         loop = asyncio.get_event_loop()
         await loop.run_in_executor(None, self.start)

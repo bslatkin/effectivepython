@@ -54,7 +54,7 @@ class Field:
         self.internal_name = "_" + self.column_name
 
 
-print("Example 2")
+    print("Example 2")
     def __get__(self, instance, instance_type):
         if instance is None:
             return self

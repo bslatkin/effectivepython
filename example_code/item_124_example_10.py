@@ -17,7 +17,7 @@
 
 
 print("Example 10")
-# Check types in this file with: python -m mypy <path>
+# Check types in this file with: python3 -m mypy <path>
 
 def get_or_default(value: int | None, default: int) -> int:
     if value is not None:

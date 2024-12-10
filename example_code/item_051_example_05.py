@@ -17,7 +17,7 @@
 
 
 print("Example 5")
-# Check types in this file with: python -m mypy <path>
+# Check types in this file with: python3 -m mypy <path>
 
 class RGB:
     def __init__(

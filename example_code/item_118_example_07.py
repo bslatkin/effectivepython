@@ -17,7 +17,7 @@
 
 
 print("Example 7")
-# Check types in this file with: python -m mypy <path>
+# Check types in this file with: python3 -m mypy <path>
 
 from collections.abc import Container
 

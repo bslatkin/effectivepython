@@ -278,7 +278,7 @@ class Workflow:
         cls.steps = tuple(steps)
 
 
-print("Example 18")
+    print("Example 18")
     def run(self):
         for step_name in type(self).steps:
             func = getattr(self, step_name)

@@ -68,13 +68,13 @@ class MyQueue:
         self.lock = Lock()
 
 
-print("Example 3")
+    print("Example 3")
     def put(self, item):
         with self.lock:
             self.items.append(item)
 
 
-print("Example 4")
+    print("Example 4")
     def get(self):
         with self.lock:
             return self.items.popleft()
@@ -94,7 +94,7 @@ class Worker(Thread):
         self.work_done = 0
 
 
-print("Example 6")
+    print("Example 6")
     def run(self):
         while True:
             self.polled_count += 1

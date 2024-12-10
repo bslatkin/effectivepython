@@ -123,13 +123,13 @@ class NewBucket:
         )
 
 
-print("Example 8")
+    print("Example 8")
     @property
     def quota(self):
         return self.max_quota - self.quota_consumed
 
 
-print("Example 9")
+    print("Example 9")
     @quota.setter
     def quota(self, amount):
         delta = self.max_quota - amount

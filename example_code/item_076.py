@@ -86,7 +86,7 @@ class ServerSession(Connection):
         self.clear_state()
 
 
-print("Example 3")
+    print("Example 3")
     def loop(self):
         while command := self.receive():
             match command.split(" "):
@@ -102,14 +102,14 @@ print("Example 3")
                     raise UnknownCommandError(command)
 
 
-print("Example 4")
+    print("Example 4")
     def set_params(self, lower, upper):
         self.clear_state()
         self.lower = int(lower)
         self.upper = int(upper)
 
 
-print("Example 5")
+    print("Example 5")
     def next_guess(self):
         if self.secret is not None:
             return self.secret
@@ -125,7 +125,7 @@ print("Example 5")
         self.send(format(guess))
 
 
-print("Example 6")
+    print("Example 6")
     def receive_report(self, decision):
         last = self.guesses[-1]
         if decision == CORRECT:
@@ -134,7 +134,7 @@ print("Example 6")
         print(f"Server: {last} is {decision}")
 
 
-print("Example 7")
+    print("Example 7")
     def clear_state(self):
         self.lower = None
         self.upper = None
@@ -144,6 +144,7 @@ print("Example 7")
 
 print("Example 8")
 import contextlib
+import time
 
 @contextlib.contextmanager
 def new_game(connection, lower, upper, secret):
@@ -175,14 +176,14 @@ class ClientSession:
         self.last_distance = None
 
 
-print("Example 10")
+    print("Example 10")
     def request_number(self):
         self.send("NUMBER")
         data = self.receive()
         return int(data)
 
 
-print("Example 11")
+    print("Example 11")
     def report_outcome(self, number):
         new_distance = math.fabs(number - self.secret)
 
@@ -203,7 +204,7 @@ print("Example 11")
         return decision
 
 
-print("Example 12")
+    print("Example 12")
     def __iter__(self):
         while True:
             number = self.request_number()
@@ -307,7 +308,7 @@ class AsyncServerSession(AsyncConnection):  # Changed
         self.clear_state()
 
 
-print("Example 18")
+    print("Example 18")
     async def loop(self):                       # Changed
         while command := await self.receive():  # Changed
             match command.split(" "):
@@ -323,14 +324,14 @@ print("Example 18")
                     raise UnknownCommandError(command)
 
 
-print("Example 19")
+    print("Example 19")
     def set_params(self, lower, upper):
         self.clear_state()
         self.lower = int(lower)
         self.upper = int(upper)
 
 
-print("Example 20")
+    print("Example 20")
     def next_guess(self):
         if self.secret is not None:
             return self.secret
@@ -339,13 +340,14 @@ print("Example 20")
             guess = random.randint(self.lower, self.upper)
             if guess not in self.guesses:
                 return guess
+
     async def send_number(self):                    # Changed
         guess = self.next_guess()
         self.guesses.append(guess)
         await self.send(format(guess))              # Changed
 
 
-print("Example 21")
+    print("Example 21")
     def receive_report(self, decision):
         last = self.guesses[-1]
         if decision == CORRECT:
@@ -390,14 +392,14 @@ class AsyncClientSession:
         self.last_distance = None
 
 
-print("Example 24")
+    print("Example 24")
     async def request_number(self):
         await self.send("NUMBER")    # Changed
         data = await self.receive()  # Changed
         return int(data)
 
 
-print("Example 25")
+    print("Example 25")
     async def report_outcome(self, number):    # Changed
         new_distance = math.fabs(number - self.secret)
 
@@ -418,7 +420,7 @@ print("Example 25")
         return decision
 
 
-print("Example 26")
+    print("Example 26")
     async def __aiter__(self):                            # Changed
         while True:
             number = await self.request_number()          # Changed

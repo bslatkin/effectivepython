@@ -308,7 +308,7 @@ with patch.multiple(
     ]
 
 
-print("Example 20")
+    print("Example 20")
     result = do_rounds(database, "Meerkat", now_func=now_func)
     assert result == 2
 

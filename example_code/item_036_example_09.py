@@ -17,7 +17,7 @@
 
 
 print("Example 9")
-# Check types in this file with: python -m mypy <path>
+# Check types in this file with: python3 -m mypy <path>
 
 from datetime import datetime
 from time import sleep

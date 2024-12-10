@@ -17,7 +17,7 @@
 
 
 print("Example 2")
-# Check types in this file with: python -m mypy <path>
+# Check types in this file with: python3 -m mypy <path>
 
 def subtract(a: int, b: int) -> int:  # Function annotation
     return a - b
