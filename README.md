@@ -1,6 +1,6 @@
 # Effective Python
 
-Hello! You've reached the official source code repository for _Effective Python: Second Edition_. To learn more about the book or contact the author, please [visit the official website](https://effectivepython.com).
+Hello! You've reached the official source code repository for _Effective Python: Third Edition_. To learn more about the book or contact the author, please [visit the official website](https://effectivepython.com).
 
 [![Cover](./cover.jpg)](https://effectivepython.com)
 
