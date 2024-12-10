@@ -111,7 +111,7 @@ def run_encrypt(data):
     env = os.environ.copy()
     env["password"] = "zf7ShyBhZOraQDdE/FiZpm/m/8f9X+M1"
     proc = subprocess.Popen(
-        ["openssl", "enc", "-des3", "-pass", "env:password"],
+        ["openssl", "enc", "-des3", "-pbkdf2", "-pass", "env:password"],
         env=env,
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
@@ -138,7 +138,7 @@ for proc in procs:
 print("Example 8")
 def run_hash(input_stdin):
     return subprocess.Popen(
-        ["openssl", "dgst", "-whirlpool", "-binary"],
+        ["openssl", "dgst", "-sha256", "-binary"],
         stdin=input_stdin,
         stdout=subprocess.PIPE,
     )
