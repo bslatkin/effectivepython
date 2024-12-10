@@ -65,10 +65,7 @@ library_path = ...
 import pathlib
 
 run_py = pathlib.Path(__file__)
-tools_dir = run_py.parent
-root_dir = tools_dir.parent
-# TODO: Fix this for example code
-library_path = root_dir / "Ch11" / "my_library" / "my_library.lib"
+library_path = run_py.parent / "item_095" / "my_library" / "my_library.lib"
 
 my_library = ctypes.cdll.LoadLibrary(library_path)
 

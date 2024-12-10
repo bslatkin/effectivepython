@@ -1,1 +1,12 @@
 **/*.pyc
+__pycache__
+.mypy_cache
+lib
+bin
+include
+pyvenv.cfg
+*.egg-info
+*.so
+*.lib
+build
+
